@@ -1,9 +1,11 @@
 package com.example.android.windcalculator;
 
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
     private double kmh;
     private double mph;
 
-
     private boolean validation = true;
     private int convertCase;
 
@@ -38,12 +39,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Find relevant EditTexts
         knotsEditText = (EditText) findViewById(R.id.knots);
         beaufortEditText = (EditText) findViewById(R.id.beaufort);
         msEditText = (EditText) findViewById(R.id.m_s);
         kmhEditText = (EditText) findViewById(R.id.km_h);
         mphEditText = (EditText) findViewById(R.id.mph);
 
+        // Find convert and clear Buttons
         Button convertButton = (Button) findViewById(R.id.convert);
         Button clearButton = (Button) findViewById(R.id.clear);
 
@@ -65,12 +68,36 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu options from the res/menu/menu_main.xml file.
+        // This adds menu items to the app bar.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.about:
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+                builder1.setMessage(R.string.about_alert);
+                builder1.setCancelable(true);
+
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    /**
+     * Validation checks if one or more fields have values
+     */
     public void validate() {
-        knotsString = "";
-        beaufortString = "";
-        msString = "";
-        kmhString = "";
-        mphString = "";
 
         knotsString = knotsEditText.getText().toString().trim();
         beaufortString = beaufortEditText.getText().toString().trim();
@@ -79,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         mphString = mphEditText.getText().toString().trim();
 
         if (TextUtils.isEmpty(knotsString) && TextUtils.isEmpty(beaufortString) && TextUtils.isEmpty(msString) && TextUtils.isEmpty(kmhString) && TextUtils.isEmpty(mphString)) {
-            Toast.makeText(this, "Enter value to convert", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.enter_value), Toast.LENGTH_SHORT).show();
             validation = false;
         } else if (!TextUtils.isEmpty(knotsString) && TextUtils.isEmpty(beaufortString) && TextUtils.isEmpty(msString) && TextUtils.isEmpty(kmhString) && TextUtils.isEmpty(mphString)) {
             validation = true;
@@ -98,35 +125,36 @@ public class MainActivity extends AppCompatActivity {
             convertCase = 5;
         } else {
             validation = false;
-            Toast.makeText(this, "Enter only one value", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.enter_one_value), Toast.LENGTH_SHORT).show();
         }
     }
 
+    /**
+     * Depending on the validation case, choose right conversion
+     */
     public void convert() {
 
         switch (convertCase) {
             case 1:
-                Toast.makeText(this, "case 1", Toast.LENGTH_SHORT).show();
                 convertKnots();
                 return;
             case 2:
-                Toast.makeText(this, "case 2", Toast.LENGTH_SHORT).show();
                 convertBeaufort();
                 return;
             case 3:
-                Toast.makeText(this, "case 3", Toast.LENGTH_SHORT).show();
                 convertMs();
                 return;
             case 4:
-                Toast.makeText(this, "case 4", Toast.LENGTH_SHORT).show();
                 convertKmh();
                 return;
             case 5:
-                Toast.makeText(this, "case 5", Toast.LENGTH_SHORT).show();
                 convertMph();
         }
     }
 
+    /**
+     * Method converts knots to Beaufort scale, m/s, km/h and mph
+     */
     public void convertKnots() {
         knots = Double.valueOf(knotsString);
 
@@ -141,6 +169,9 @@ public class MainActivity extends AppCompatActivity {
         mphEditText.setText(String.format("%.2f",mph).replace(",", "."));
     }
 
+    /**
+     * Method converts m/s to knots, Beaufort scale, km/h and mph
+     */
     public void convertMs() {
         ms = Double.valueOf(msString);
 
@@ -155,6 +186,9 @@ public class MainActivity extends AppCompatActivity {
         mphEditText.setText(String.format("%.2f", mph).replace(",", "."));
     }
 
+    /**
+     * Method converts km/h to knots, Beaufort scale, m/s and mph
+     */
     public void convertKmh() {
         kmh = Double.valueOf(kmhString);
 
@@ -169,6 +203,9 @@ public class MainActivity extends AppCompatActivity {
         mphEditText.setText(String.format("%.2f", mph).replace(",", "."));
     }
 
+    /**
+     * Method converts mph to knots, Beaufort scale, m/s and km/h
+     */
     public void convertMph() {
         mph = Double.valueOf(mphString);
 
@@ -183,92 +220,99 @@ public class MainActivity extends AppCompatActivity {
         kmhEditText.setText(String.format("%.2f", kmh).replace(",", "."));
     }
 
+    /**
+     * Method converts Beaufort scale to knots, m/s, km/h and mph
+     */
     public void convertBeaufort() {
         beaufort = Integer.valueOf(beaufortString);
 
         switch (beaufort) {
             case 0:
-                knotsEditText.setText("0");
-                msEditText.setText("0 - 0.02");
-                kmhEditText.setText("0");
-                mphEditText.setText("0");
+                knotsEditText.setText(getString(R.string.case_0_knots));
+                msEditText.setText(getString(R.string.case_0_ms));
+                kmhEditText.setText(getString(R.string.case_0_kmh));
+                mphEditText.setText(getString(R.string.case_0_mph));
                 return;
             case 1:
-                knotsEditText.setText("1 - 3");
-                msEditText.setText("0.3 - 1.5");
-                kmhEditText.setText("1 - 6");
-                mphEditText.setText("1 - 3");
+                knotsEditText.setText(getString(R.string.case_1_knots));
+                msEditText.setText(getString(R.string.case_1_ms));
+                kmhEditText.setText(getString(R.string.case_1_kmh));
+                mphEditText.setText(getString(R.string.case_1_mph));
                 return;
             case 2:
-                knotsEditText.setText("4 - 6");
-                msEditText.setText("1.6 - 3.3");
-                kmhEditText.setText("7 - 11");
-                mphEditText.setText("4 - 7");
+                knotsEditText.setText(getString(R.string.case_2_knots));
+                msEditText.setText(getString(R.string.case_2_ms));
+                kmhEditText.setText(getString(R.string.case_2_kmh));
+                mphEditText.setText(getString(R.string.case_2_mph));
                 return;
             case 3:
-                knotsEditText.setText("7 - 10");
-                msEditText.setText("3.4 - 5.4");
-                kmhEditText.setText("12 - 19");
-                mphEditText.setText("8 - 12");
+                knotsEditText.setText(getString(R.string.case_3_knots));
+                msEditText.setText(getString(R.string.case_3_ms));
+                kmhEditText.setText(getString(R.string.case_3_kmh));
+                mphEditText.setText(getString(R.string.case_3_mph));
                 return;
             case 4:
-                knotsEditText.setText("11 - 16");
-                msEditText.setText("5.5 - 7.9");
-                kmhEditText.setText("20 - 29");
-                mphEditText.setText("13 - 18");
+                knotsEditText.setText(getString(R.string.case_4_knots));
+                msEditText.setText(getString(R.string.case_4_ms));
+                kmhEditText.setText(getString(R.string.case_4_kmh));
+                mphEditText.setText(getString(R.string.case_4_mph));
                 return;
             case 5:
-                knotsEditText.setText("17 - 21");
-                msEditText.setText("8.0 - 10.7");
-                kmhEditText.setText("30 - 39");
-                mphEditText.setText("19 - 24");
+                knotsEditText.setText(getString(R.string.case_5_knots));
+                msEditText.setText(getString(R.string.case_5_ms));
+                kmhEditText.setText(getString(R.string.case_5_kmh));
+                mphEditText.setText(getString(R.string.case_5_mph));
                 return;
             case 6:
-                knotsEditText.setText("22 - 27");
-                msEditText.setText("10.8 - 13.8");
-                kmhEditText.setText("40 - 50");
-                mphEditText.setText("25 - 31");
+                knotsEditText.setText(getString(R.string.case_6_knots));
+                msEditText.setText(getString(R.string.case_6_ms));
+                kmhEditText.setText(getString(R.string.case_6_kmh));
+                mphEditText.setText(getString(R.string.case_6_mph));
                 return;
             case 7:
-                knotsEditText.setText("28 - 33");
-                msEditText.setText("13.9 - 17.1");
-                kmhEditText.setText("51 - 62");
-                mphEditText.setText("32 - 38");
+                knotsEditText.setText(getString(R.string.case_7_knots));
+                msEditText.setText(getString(R.string.case_7_ms));
+                kmhEditText.setText(getString(R.string.case_7_kmh));
+                mphEditText.setText(getString(R.string.case_7_mph));
                 return;
             case 8:
-                knotsEditText.setText("34 - 40");
-                msEditText.setText("17.2 - 20.7");
-                kmhEditText.setText("63 - 75");
-                mphEditText.setText("39 - 46");
+                knotsEditText.setText(getString(R.string.case_8_knots));
+                msEditText.setText(getString(R.string.case_8_ms));
+                kmhEditText.setText(getString(R.string.case_8_kmh));
+                mphEditText.setText(getString(R.string.case_8_mph));
                 return;
             case 9:
-                knotsEditText.setText("41 - 47");
-                msEditText.setText("20.8 - 24.4");
-                kmhEditText.setText("76 - 87");
-                mphEditText.setText("47 - 54");
+                knotsEditText.setText(getString(R.string.case_9_knots));
+                msEditText.setText(getString(R.string.case_9_ms));
+                kmhEditText.setText(getString(R.string.case_9_kmh));
+                mphEditText.setText(getString(R.string.case_9_mph));
                 return;
             case 10:
-                knotsEditText.setText("48 - 55");
-                msEditText.setText("24.5 - 28.4");
-                kmhEditText.setText("88 - 102");
-                mphEditText.setText("55 - 63");
+                knotsEditText.setText(getString(R.string.case_10_knots));
+                msEditText.setText(getString(R.string.case_10_ms));
+                kmhEditText.setText(getString(R.string.case_10_kmh));
+                mphEditText.setText(getString(R.string.case_10_mph));
                 return;
             case 11:
-                knotsEditText.setText("56 - 63");
-                msEditText.setText("28.5 - 32.6");
-                kmhEditText.setText("103 - 117");
-                mphEditText.setText("64 - 72");
+                knotsEditText.setText(getString(R.string.case_11_knots));
+                msEditText.setText(getString(R.string.case_11_ms));
+                kmhEditText.setText(getString(R.string.case_11_kmh));
+                mphEditText.setText(getString(R.string.case_11_mph));
                 return;
             case 12:
-                knotsEditText.setText("63+");
-                msEditText.setText("32.6+");
-                kmhEditText.setText("117+");
-                mphEditText.setText("72+");
+                knotsEditText.setText(getString(R.string.case_12_knots));
+                msEditText.setText(getString(R.string.case_12_ms));
+                kmhEditText.setText(getString(R.string.case_12_kmh));
+                mphEditText.setText(getString(R.string.case_12_mph));
         }
     }
 
+    /**
+     * Helper method checks Beaufort scale
+     * @param knots
+     * @return beaufort
+     */
     public int getBeaufort(double knots) {
-        Log.i(MainActivity.class.getSimpleName(), "in getBeaufort method, knots = " + knots);
         if (knots < 0.5) {
             beaufort = 0;
         } else if ( knots >= 0.5 && knots < 3.5) {
@@ -296,10 +340,12 @@ public class MainActivity extends AppCompatActivity {
         } else if ( knots >= 63.5) {
             beaufort = 12;
         }
-        Log.i(MainActivity.class.getSimpleName(), "in getBeaufort method, beaufort = " + beaufort);
         return beaufort;
     }
 
+    /**
+     * Method clears all fields
+     */
     public void clear() {
         knotsEditText.setText("");
         beaufortEditText.setText("");

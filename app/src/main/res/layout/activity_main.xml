@@ -30,7 +30,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="16dp"
                 android:layout_weight="1"
-                android:text="knots" />
+                android:text="@string/knots" />
 
         </LinearLayout>
 
@@ -53,7 +53,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="16dp"
                 android:layout_weight="1"
-                android:text="Beaufort" />
+                android:text="@string/beaufort" />
 
         </LinearLayout>
 
@@ -76,7 +76,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="16dp"
                 android:layout_weight="1"
-                android:text="m/s" />
+                android:text="@string/ms" />
 
         </LinearLayout>
 
@@ -99,7 +99,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="16dp"
                 android:layout_weight="1"
-                android:text="km/h" />
+                android:text="@string/kmh" />
 
         </LinearLayout>
 
@@ -122,7 +122,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="16dp"
                 android:layout_weight="1"
-                android:text="mph" />
+                android:text="@string/mph" />
 
         </LinearLayout>
 
@@ -139,7 +139,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:layout_weight="1"
-                android:text="convert" />
+                android:text="@string/convert" />
 
             <Button
                 android:id="@+id/clear"
@@ -147,7 +147,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:layout_weight="1"
-                android:text="clear" />
+                android:text="@string/clear" />
 
         </LinearLayout>
     </LinearLayout>

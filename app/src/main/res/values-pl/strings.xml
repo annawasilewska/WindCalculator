@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kalkulator wiatru</string>
+    <string name="about">O programie</string>
+    <string name="about_alert">Kalkulator wiatru\n\nWersja: 1.0\n\nTwórca: Anna Wasilewska</string>
+    <string name="clear">wyczyść</string>
+    <string name="convert">Przelicz</string>
+    <string name="enter_one_value">Wpisz tylko jedną wartość</string>
+    <string name="enter_value">Wpisz wartość do przeliczenia</string>
+    <string name="knots">węzły</string>
+</resources>

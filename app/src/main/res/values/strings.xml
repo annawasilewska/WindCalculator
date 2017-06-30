@@ -1,3 +1,104 @@
 <resources>
     <string name="app_name">Wind Calculator</string>
+
+    <string name="knots">knots</string>
+
+    <string name="beaufort" translatable="false">Beaufort</string>
+
+    <string name="ms" translatable="false">m/s</string>
+
+    <string name="kmh" translatable="false">km/h</string>
+
+    <string name="mph" translatable="false">mph</string>
+
+    <string name="convert">convert</string>
+
+    <string name="clear">clear</string>
+
+    <string name="enter_value">Enter value to convert</string>
+
+    <string name="enter_one_value">Enter only one value</string>
+
+    <string name="about">About</string>
+
+    <string name="about_alert">Wind Calculator\n\nVersion: 1.0\n\nMade by: Anna Wasilewska</string>
+
+    <!-- Beaufort scale case 0 -->
+    <string name="case_0_knots" translatable="false">0</string>
+    <string name="case_0_ms" translatable="false">0 – 0.02</string>
+    <string name="case_0_kmh" translatable="false">0</string>
+    <string name="case_0_mph" translatable="false">0</string>
+
+    <!-- Beaufort scale case 1 -->
+    <string name="case_1_knots" translatable="false">1 – 3</string>
+    <string name="case_1_ms" translatable="false">0.3 – 1.5</string>
+    <string name="case_1_kmh" translatable="false">1 – 6</string>
+    <string name="case_1_mph" translatable="false">1 – 3</string>
+
+    <!-- Beaufort scale case 2 -->
+    <string name="case_2_knots" translatable="false">4 – 6</string>
+    <string name="case_2_ms" translatable="false">1.6 – 3.3</string>
+    <string name="case_2_kmh" translatable="false">7 – 11</string>
+    <string name="case_2_mph" translatable="false">4 – 7</string>
+
+    <!-- Beaufort scale case 3 -->
+    <string name="case_3_knots" translatable="false">7 – 10</string>
+    <string name="case_3_ms" translatable="false">3.4 – 5.4</string>
+    <string name="case_3_kmh" translatable="false">12 – 19</string>
+    <string name="case_3_mph" translatable="false">8 – 12</string>
+
+    <!-- Beaufort scale case 4 -->
+    <string name="case_4_knots" translatable="false">11 – 16</string>
+    <string name="case_4_ms" translatable="false">5.5 – 7.9</string>
+    <string name="case_4_kmh" translatable="false">20 – 29</string>
+    <string name="case_4_mph" translatable="false">13 – 18</string>
+
+    <!-- Beaufort scale case 5 -->
+    <string name="case_5_knots" translatable="false">17 – 21</string>
+    <string name="case_5_ms" translatable="false">8.0 – 10.7</string>
+    <string name="case_5_kmh" translatable="false">30 – 39</string>
+    <string name="case_5_mph" translatable="false">19 – 24</string>
+
+    <!-- Beaufort scale case 6 -->
+    <string name="case_6_knots" translatable="false">22 – 27</string>
+    <string name="case_6_ms" translatable="false">10.8 – 13.8</string>
+    <string name="case_6_kmh" translatable="false">40 – 50</string>
+    <string name="case_6_mph" translatable="false">25 – 31</string>
+
+    <!-- Beaufort scale case 7 -->
+    <string name="case_7_knots" translatable="false">28 – 33</string>
+    <string name="case_7_ms" translatable="false">13.9 – 17.1</string>
+    <string name="case_7_kmh" translatable="false">51 – 62</string>
+    <string name="case_7_mph" translatable="false">32 – 38</string>
+
+    <!-- Beaufort scale case 8 -->
+    <string name="case_8_knots" translatable="false">34 – 40</string>
+    <string name="case_8_ms" translatable="false">17.2 – 20.7</string>
+    <string name="case_8_kmh" translatable="false">63 – 75</string>
+    <string name="case_8_mph" translatable="false">39 – 46</string>
+
+    <!-- Beaufort scale case 9 -->
+    <string name="case_9_knots" translatable="false">41 – 47</string>
+    <string name="case_9_ms" translatable="false">20.8 – 24.4</string>
+    <string name="case_9_kmh" translatable="false">76 – 87</string>
+    <string name="case_9_mph" translatable="false">47 – 54</string>
+
+    <!-- Beaufort scale case 10 -->
+    <string name="case_10_knots" translatable="false">48 – 55</string>
+    <string name="case_10_ms" translatable="false">24.5 – 28.4</string>
+    <string name="case_10_kmh" translatable="false">88 – 102</string>
+    <string name="case_10_mph" translatable="false">55 – 63</string>
+
+    <!-- Beaufort scale case 11 -->
+    <string name="case_11_knots" translatable="false">56 – 63</string>
+    <string name="case_11_ms" translatable="false">28.5 – 32.6</string>
+    <string name="case_11_kmh" translatable="false">103 – 117</string>
+    <string name="case_11_mph" translatable="false">64 – 72</string>
+
+    <!-- Beaufort scale case 12 -->
+    <string name="case_12_knots" translatable="false">63+</string>
+    <string name="case_12_ms" translatable="false">32.6+</string>
+    <string name="case_12_kmh" translatable="false">117+</string>
+    <string name="case_12_mph" translatable="false">72+</string>
+
 </resources>
